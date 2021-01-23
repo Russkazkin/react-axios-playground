@@ -9,10 +9,10 @@ import './Blog.css';
 class Blog extends Component {
     async componentDidMount() {
         try {
-            const data = (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
+            const data = (await axios.get('https://jsonplaceholder.typicode.com/posts/tr')).data;
             console.log(data);
         } catch (error) {
-            console.log(error);
+            console.log(error.response.config);
         }
     }
 
