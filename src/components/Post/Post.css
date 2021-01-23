@@ -1,5 +1,5 @@
 .Post {
-    width: 100px;
+    width: calc(90vh / 3);
     padding: 16px;
     text-align: center;
     border: 1px solid #eee;
