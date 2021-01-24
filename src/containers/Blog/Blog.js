@@ -13,8 +13,14 @@ class Blog extends Component {
 
     async componentDidMount() {
         try {
-            const posts = (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
-            this.setState({posts: posts});
+            const posts = (await axios.get('https://jsonplaceholder.typicode.com/posts')).data.slice(0, 9);
+            const updatedPosts = posts.map((post) => {
+                return {
+                    ...post, author: 'Skazkin',
+                }
+            }
+            );
+            this.setState({posts: updatedPosts});
         } catch (error) {
             console.log(error.response.config);
         }
