@@ -15,7 +15,7 @@ class Blog extends Component {
 
     async componentDidMount() {
         try {
-            const posts = (await axios.get('https://jsonplaceholder.typicode.com/posts')).data.slice(0, 9);
+            const posts = (await axios.get('posts')).data.slice(0, 9);
             const updatedPosts = posts.map((post) => {
                 return {
                     ...post, author: 'Skazkin',
