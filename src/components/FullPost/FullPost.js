@@ -9,7 +9,6 @@ class FullPost extends Component {
     };
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(prevState);
         try {
             if (!this.props.id) return;
             if(!this.state.loadedPost || this.state.loadedPost.id !== this.props.id) {
