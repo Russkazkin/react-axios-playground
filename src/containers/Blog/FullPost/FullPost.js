@@ -22,7 +22,7 @@ class FullPost extends Component {
 
     deletePostHandler = async () => {
         try {
-            const response = await axios.delete(`posts/${this.props.id}`).data;
+            await axios.delete(`posts/${this.props.id}`).data;
         } catch (e) {
             console.log(e.response)
         }
