@@ -8,11 +8,13 @@ class FullPost extends Component {
         loadedPost: null,
     };
 
-    async componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidMount(prevProps, prevState, snapshot) {
+        this.id = this.props.match.params.id;
         try {
-            if (!this.props.id) return;
-            if(!this.state.loadedPost || this.state.loadedPost.id !== this.props.id) {
-                const post = (await axios.get(`posts/${this.props.id}`)).data;
+            if (!this.id) return;
+            console.log(this.id);
+            if(!this.state.loadedPost || this.state.loadedPost.id !== this.id) {
+                const post = (await axios.get(`posts/${this.id}`)).data;
                 this.setState({loadedPost: post});
             }
         } catch (error) {
@@ -31,7 +33,7 @@ class FullPost extends Component {
     render () {
         const {loadedPost} = this.state;
         let post = <p>Please select a Post!</p>;
-        if (this.props.id && loadedPost) {
+        if (this.id && loadedPost) {
             post = (
                 <div className="FullPost">
                     <h1>{loadedPost.title}</h1>
