@@ -9,10 +9,17 @@ class FullPost extends Component {
     };
 
     async componentDidMount(prevProps, prevState, snapshot) {
-        this.id = this.props.match.params.id;
+        await this.loadData();
+    }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        await this.loadData();
+    }
+
+    async loadData() {
+        this.id = parseInt(this.props.match.params.id);
         try {
             if (!this.id) return;
-            console.log(this.id);
             if(!this.state.loadedPost || this.state.loadedPost.id !== this.id) {
                 const post = (await axios.get(`posts/${this.id}`)).data;
                 this.setState({loadedPost: post});
