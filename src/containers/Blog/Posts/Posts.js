@@ -1,10 +1,13 @@
-import {Component} from "react";
-import {Link} from "react-router-dom";
-
-import Post from "../../../components/Post/Post";
+import React, {Component} from "react";
+import {Link, Route} from "react-router-dom";
 import axios from "../../../axios";
 
+import Post from "../../../components/Post/Post";
+import FullPost from "../FullPost/FullPost";
+
+
 import './Posts.css';
+
 
 class Posts extends Component {
     state = {
@@ -33,16 +36,19 @@ class Posts extends Component {
         if(!this.state.error) {
             posts = this.state.posts.map(post => {
                 return (
-                    <Link  key={post.id} to={'/post/' + post.id}>
+                    <Link  key={post.id} to={'/posts/' + post.id}>
                         <Post {...post} />
                     </Link>
                 );
             });
         }
         return (
-            <section className="Posts">
-                {posts}
-            </section>
+            <div>
+                <section className="Posts">
+                    {posts}
+                </section>
+                <Route exact path={this.props.match.url + '/:id'} component={FullPost} />
+            </div>
         );
     }
 }
