@@ -23,7 +23,7 @@ class Blog extends Component {
                 <Switch>
                     <Route exact path="/new-post" component={NewPost} />
                     <Route path="/posts" component={Posts} />
-                    <Redirect from={'/'} to={'/posts'} />
+                    <Redirect from='/' to='/posts' />
                 </Switch>
             </div>
         );
