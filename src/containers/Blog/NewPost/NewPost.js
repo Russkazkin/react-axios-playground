@@ -21,7 +21,8 @@ class NewPost extends Component {
             }
             const response = await axios.post('posts', post);
             console.log(response);
-            this.setState({submitted: true});
+            this.props.history.goBack();
+            //this.setState({submitted: true});
         } catch (e) {
             console.log(e.response);
         }
